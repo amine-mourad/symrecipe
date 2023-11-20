@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symrecipe - Modifier une recette
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<h3 class="mt-4">
+			Modifier une recette
+		</h3>
+		{{ form_start(recipeForm) }}
+		<div class="my-custom-class-for-errors">
+			{{ form_errors(recipeForm) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(recipeForm.name) }}
+			{{ form_widget(recipeForm.name) }}
+			{{ form_errors(recipeForm.name) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(recipeForm.time) }}
+			{{ form_widget(recipeForm.time) }}
+			{{ form_errors(recipeForm.time) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(recipeForm.nbPeople) }}
+			{{ form_widget(recipeForm.nbPeople) }}
+			{{ form_errors(recipeForm.nbPeople) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(recipeForm.difficulty) }}
+			{{ form_widget(recipeForm.difficulty) }}
+			{{ form_errors(recipeForm.difficulty) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(recipeForm.description) }}
+			{{ form_widget(recipeForm.description) }}
+			{{ form_errors(recipeForm.description) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(recipeForm.price) }}
+			{{ form_widget(recipeForm.price) }}
+			{{ form_errors(recipeForm.price) }}
+		</div>
+		<div class="form-group">
+			{{ form_widget(recipeForm.isFavorite) }}
+			{{ form_label(recipeForm.isFavorite) }}
+			{{ form_errors(recipeForm.isFavorite) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(recipeForm.ingredient) }}
+			{{ form_widget(recipeForm.ingredient) }}
+			{{ form_errors(recipeForm.ingredient) }}
+		</div>
+		{{ form_end(recipeForm) }}
+	</div>
+{% endblock %}

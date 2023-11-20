@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symrecipe - Mes recettes
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		<a class="btn btn-primary mb-3" href="{{ path('nouvelle_recette') }}">Crée une recette
+		</a>
+
+		{% if recipesp %}
+			<table class="table table-hover table-striped mb-1">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Prix</th>
+						<th scope="col">Difficulté</th>
+						<th scope="col">Date de création</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for recipe in recipesp %}
+						<tr class="table-dark">
+							<td>{{recipe.id}}</td>
+							<td>{{recipe.name}}</td>
+							<td>{{recipe.price|default('Non rensigné')}}</td>
+							<td>{{recipe.difficulty|default('Non rensigné')}}</td>
+							<td>{{recipe.createdAt|date("d/m/Y")}}</td>
+							<td>
+								<a href="{{path('edition_recette',{id:recipe.id})}}" class="btn btn-info">
+									Modifier
+								</a>
+								<a href="{{path('suppression_recette',{id:recipe.id})}}" class="btn btn-danger">
+									Supprimer
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</tbody>
+		</table>
+		<h5 class="mb-3">
+			Le nombre total des recettes est
+			<span class="badge bg-primary rounded-pill">{{ recipesp.getTotalItemCount }}</span>
+		</h5>
+		<div class="navigation d-flex justify-content-center">
+			{{ knp_pagination_render(recipesp) }}
+		</div>
+	{% else %}
+		<h4>
+			Il n'y a pas de reccete
+			<h4>
+			{% endif %}
+		</div>
+	{% endblock %}
