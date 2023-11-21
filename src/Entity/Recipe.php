@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\HasLifecycleCallbacks]
+#[UniqueEntity('name')]
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
 class Recipe
 {
